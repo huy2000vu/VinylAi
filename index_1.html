@@ -1,59 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="style/header.css">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
-    <title>VinylAI</title>
-
+    <title>VinylAI homepage</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        p {
-            margin-bottom: 10px;
-        }
-
-        form {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        label {
-            margin-right: 10px;
-        }
-
-        input {
-            padding: 5px;
-            width: 300px;
-        }
-
-        button {
-            padding: 8px;
-        }
-
-        .main-img {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-        }
     </style>
+
 </head>
 <body>
-    <h1>VinylAI</h1>
-    <p>Generate images in real-time based on the lyrics of the song you're listening to.</p>
-     <img src="{{ generated_image|default("https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/0715034d-4044-4c55-9131-e4bfd6dd20ca/2_4x.png?format=512w", true) }}" class="mainImg" alt="Generated Image">
+    <div class="header">
+        <h1>VinylAI</h1>
+    </div>
+
+    <div class="content">
+        <img src="{{ generated_image|default("https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/0715034d-4044-4c55-9131-e4bfd6dd20ca/2_4x.png?format=512w", true) }}" class="mainImg" alt="Generated Image">
+        <p>Generate images in real-time based on the lyrics of the song you're listening to.</p>
+    </div>
+   
+     
 </body>
 
 </body>
