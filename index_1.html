@@ -17,8 +17,18 @@
 </head>
 <body>
     <div class="header">
-        <img src="images/logo.png" class="logoimg">
-        <h1>VinylAI</h1>
+        <div class="logoHeader">
+            <img src="images/logo.png" class="logoimg">
+            <h1 id="projectName">VinylAI</h1>
+        </div>
+        <div class="searchbar">
+            <form id="form" role="search">
+                <input type="search" id="query" name="q"
+                 placeholder="Search..."
+                 aria-label="Search through site content">
+                <button>Search</button>
+              </form>
+        </div>
         <ul>
             <li>Log in</li>
             <li>About</li>

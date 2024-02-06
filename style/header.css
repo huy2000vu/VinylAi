@@ -1,9 +1,20 @@
 .header{
     display: flex;
-    background-color: #7395AE;
+    background-color: #4b5358ff;
+    padding: 0px 90px 0px 90px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    height: 10  0px;
 }
-.ul{
-    text-decoration-style: none;
+.logoHeader{
+    display: flex;
+    gap: 20px;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
 }
 .logoimg{
     height: 100px;
