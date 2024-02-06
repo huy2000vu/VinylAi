@@ -1,4 +1,17 @@
+.header{
+    display: flex;
+    background-color: #7395AE;
+}
+.ul{
+    text-decoration-style: none;
+}
+.logoimg{
+    height: 100px;
+    width: auto;
+}
 
+
+/* 
 body {
     font-family: 'Arial', Helvetica, sans-serif;
     background-color: #f8f8f8;
@@ -86,4 +99,4 @@ button {
     &:hover {
         background-color: #0056b3;
     }
-}
+} */
