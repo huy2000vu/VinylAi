@@ -1,16 +1,18 @@
 .header{
     display: flex;
     background-color: #4b5358ff;
-    padding: 0px 90px 0px 90px;
-    justify-content: space-between;
+    /* padding: 0px 40px 0px 40px; */
+    justify-content:space-evenly;
     align-items: center;
-    font-size: 18px;
-    height: 10  0px;
+    font-size: 20px;
+    height: 100px;
+    font-weight: bold;
 }
 .logoHeader{
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
+  
 ul{
     list-style-type: none;
     display: flex;
