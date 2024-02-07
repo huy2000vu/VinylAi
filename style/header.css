@@ -14,7 +14,7 @@
     align-items: center;
 }
   
-ul{
+.navigationheader{
     list-style-type: none;
     display: flex;
     gap: 40px;
@@ -49,6 +49,13 @@ input{
     font-size: 15px;
     color: black;
 }
+
+button .fa-solid{
+    width: 25px;
+    color: black;
+    font-size: 20px;
+}
+
 /* 
 body {
     font-family: 'Arial', Helvetica, sans-serif;
