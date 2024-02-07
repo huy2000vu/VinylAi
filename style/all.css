@@ -5,8 +5,9 @@
 --rose-quartz: #af929dff;
 --lavender-web: #d2d6efff; */
 *{
-
+    padding: 0;
+    margin: 0;
 }
 .body{
-    padding: 0;
+   
 }
