@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style/header.css"> <!-- style sheet for header -->
     <link rel="stylesheet" href="style/all.css"> <!--stylesheet for the whole page-->
+    <link rel="stylesheet" href="style/content.css">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
     <title>VinylAI homepage</title>
     <style></style>
@@ -33,9 +34,15 @@
         </ul>
     </div>
 
-    <div class="content">
-        <img src="{{ generated_image|default("https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/0715034d-4044-4c55-9131-e4bfd6dd20ca/2_4x.png?format=512w", true) }}" class="mainImg" alt="Generated Image">
-        <p>Generate images in real-time based on the lyrics of the song you're listening to.</p>
+    <div class="web_content">
+        <!-- <img src="{{ generated_image|default("https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/0715034d-4044-4c55-9131-e4bfd6dd20ca/2_4x.png?format=512w", true) }}" class="mainImg" alt="Generated Image"> -->
+        <!-- <p>Generate images in real-time based on the lyrics of the song you're listening to.</p> -->
+        <div class="lyrics">
+            <h2> lyrics </h2>
+        </div>
+        <div class="generated_pics">
+            <h2>Ai generated pictures</h2>
+        </div>
     </div>
    
      
