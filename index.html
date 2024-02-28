@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style/header.css"> <!-- style sheet for header -->
+    <link rel="stylesheet" href="style/all.css"> <!--stylesheet for the whole page-->
+    <link rel="stylesheet" href="style/content.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}">
+    <title>VinylAI homepage</title>
+    <style></style>
+    <script src="https://kit.fontawesome.com/f672a297a5.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="header">
+        <div class="logoHeader">
+            <img src="images/logo.png" class="logoimg">
+            <h1 id="projectName">VinylAI</h1>
+        </div>
+
+        <div class="searchbar">
+            <div class="row">
+                <input type="text" id="input_box" placeholder="Search"
+                autocomplete="off">
+               <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+        <ul class="navigationheader">
+            <li>Log in</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+
+    <div class="web_content">
+        <!-- <img src="{{ generated_image|default("https://images.squarespace-cdn.com/content/v1/6213c340453c3f502425776e/0715034d-4044-4c55-9131-e4bfd6dd20ca/2_4x.png?format=512w", true) }}" class="mainImg" alt="Generated Image"> -->
+        <!-- <p>Generate images in real-time based on the lyrics of the song you're listening to.</p> -->
+        <div class="lyrics">
+            <h2> lyrics </h2>
+        </div>
+        <div class="generated_pics">
+            <h2>Ai generated pictures</h2>
+        </div>
+    </div>
+
+    <div class="about"></div>
+     
+</body>
+
+</body>
+</html>
+
