@@ -1,9 +1,8 @@
 const imageContainer = document.getElementById("dynamic-image");
-//const imageUrls = ["static/image1.png", "static/image2.png", "static/image3.png"];
 let current =0;
 
-function updateImage() {
-    fetch('/get_random_image()')
+function updateImage(genre = "country") {
+    fetch(`/get_random_image?genre=${genre}`)
     .then(response => response.json())
     .then(data => {
         const imageURL = data.image_url;
@@ -14,4 +13,7 @@ function updateImage() {
  }
 
 
-setInterval(updateImage, 3000);
+//setInterval(updateImage, 3000);
+setInterval(function() {
+    updateImage("comedy"); // Pass the genre as a parameter to updateImage
+  }, 3000);

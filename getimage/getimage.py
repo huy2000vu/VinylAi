@@ -54,7 +54,7 @@ def main():
     for item in items:
       print(f"{item['name']} ({item['id']})")
   except HttpError as error:
-    # TODO(developer) - Handle errors from drive API.
+    # Handle errors from drive API.
     print(f"An error occurred: {error}")
 
 
