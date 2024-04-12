@@ -21,9 +21,10 @@ export default function Dashboard({code}) {
         setPlayingTrack(track)
         setSearch('')
         setLyrics('')
+        console.log('Selected Track:', track);
+        console.log('Artist Name:', track.artistName);  // Assuming artistName is a property of track    
     }
-    // console.log(playingTrack.title)
-    // console.log(playingTrack.artistName)
+    
     useEffect(()=>{
         if(!playingTrack) return
         axios.get('http://localhost:3001/lyrics',{
