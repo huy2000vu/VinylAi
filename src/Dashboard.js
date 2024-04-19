@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import useAuth from './useAuth';
 import Player from './Player';
-import { Container, Form } from 'react-bootstrap';
+import { Container, Form, Row, Col} from 'react-bootstrap';
 import SpotifyWebApi from 'spotify-web-api-node';
 import TrackSearchResult from './TrackSearchResult';
 import axios from 'axios';
@@ -70,27 +70,56 @@ export default function Dashboard({code}) {
     }, [search, accessToken])
 
 
+    // return (
+    //     <Container className="d-flex flex-column py-2" style={{height :'100vh'}}>
+    //         <Form.Control 
+    //         type ="Search" 
+    //         placeholder = "Search Songs/Artists" 
+    //         value={search} 
+    //         onChange={e => setSearch(e.target.value)}
+    //         />
+    //         <div className="flex-grow-1 my-2" style={{overflowY : 'auto'}}> 
+    //         {searchResults.map(track =>(
+    //             <TrackSearchResult track = {track} key ={track.uri} chooseTrack={chooseTrack}/>
+    //         ))}
+    //         {searchResults.length === 0 && (
+    //             <div className='text-center' style={{whiteSpace: 'pre'}}>
+    //                 {lyrics}
+    //                 </div>
+    //         )}
+    //         </div>
+    //         <div> 
+    //             <Player accessToken={accessToken} trackUri ={playingTrack?.uri} />
+    //             </div>
+    //     </Container>
+    // )
     return (
-        <Container className="d-flex flex-column py-2" style={{height :'100vh'}}>
-            <Form.Control 
-            type ="Search" 
-            placeholder = "Search Songs/Artists" 
-            value={search} 
-            onChange={e => setSearch(e.target.value)}
+        <Container className="d-flex flex-column py-2" style={{ height: '100vh' }}>
+            <Form.Control
+                type="search"
+                placeholder="Search Songs/Artists"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
             />
-            <div className="flex-grow-1 my-2" style={{overflowY : 'auto'}}> 
-            {searchResults.map(track =>(
-                <TrackSearchResult track = {track} key ={track.uri} chooseTrack={chooseTrack}/>
-            ))}
-            {searchResults.length === 0 && (
-                <div className='text-center' style={{whiteSpace: 'pre'}}>
-                    {lyrics}
-                    </div>
-            )}
+            <Row className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
+                <Col md={8} className="lyrics-container">
+                    {searchResults.map(track => (
+                        <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
+                    ))}
+                    {searchResults.length === 0 && (
+                        <div className='text-center' style={{ whiteSpace: 'pre' }}>
+                            {lyrics}
+                        </div>
+                    )}
+                </Col>
+                <Col md={4} className="pictures-container">
+                    {/* Here you can add your image or another component to handle images */}
+                    <img src="public/logo512.png" alt="Description of image" style={{border: '2px solid red'}} />
+                </Col>
+            </Row>
+            <div>
+                <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
             </div>
-            <div> 
-                <Player accessToken={accessToken} trackUri ={playingTrack?.uri} />
-                </div>
         </Container>
-    )
+    );
 }
