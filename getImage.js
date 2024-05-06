@@ -40,7 +40,7 @@ async function searchFile(genre) {
   // we need to look for all the files in which the parent = the folder's id
   try {
     response = await gapi.client.drive.files.list({
-      'q': `'${files[0].id}' in parents`, // Search files inside the 'country' folder
+      'q': `'${files[0].id}' in parents`, // Search files inside the specified genre folder
       'pageSize': 20, // Adjust as needed
       'fields': 'files(id, name)',
     });
