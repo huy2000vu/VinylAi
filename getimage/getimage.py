@@ -87,7 +87,7 @@ def search_file(genre = 'study'):
     folder_id = None
     for folder in getFolder.get("files", []):
       folder_id = folder.get("id")
-      print(f"Folder name: {folder.get("name")}, id: {folder.get("id")}")
+      print(f"Folder name: {folder.get('name')}, id: {folder.get('id')}")
 
     files = []
     page_token = None
