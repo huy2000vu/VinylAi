@@ -62,16 +62,15 @@ app.post('/login', (req, res) => { //arrow functionf
 // })
 
 app.get('/lyrics', async (req, res) => {
-    const { artist, track } = req.query;
-
+    const { artistName, track } = req.query;
     // First, try to get lyrics using lyrics-finder
-    let lyrics = await lyricsFinder(artist, track);
-
+    let lyrics = await lyricsFinder(artistName, track);
+    console.log(artistName);
+    console.log(track);
     if (!lyrics) {
         // If no lyrics found, try fetching from Genius
-        try {
             const response = await geniusApi.get(`/search`, {
-                params: { q: `${artist} ${track}` }
+                params: { q: `${artistName} ${track}` }
             });
             const hits = response.data.response.hits;
             if (hits.length > 0) {
@@ -80,13 +79,7 @@ app.get('/lyrics', async (req, res) => {
             } else {
                 lyrics = "No lyrics available from any source.";
             }
-        } catch (error) {
-            console.error('Error fetching from Genius:', error);
-            return res.status(500).json({ error: "Failed to fetch lyrics from both sources." });
-        }
     }
-
-    // Return the lyrics or the message with the Genius URL
     res.json({ lyrics });
 });
 
