@@ -4,6 +4,8 @@
 3. on another terminal/command prompt -> run "npm start"
 
 
+# songs that have lyrics
+1. Angel (From Barbie The Album) - PinkPantheress
 
 
 
