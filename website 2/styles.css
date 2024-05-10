@@ -1,0 +1,145 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #3bffff;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+}
+
+nav ul {
+    text-align: center;
+    margin-top: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+section {
+    padding: 50px 0;
+}
+
+/* .small-image {
+    width: 200px; /* Adjust the width as needed 
+    height: auto; /* Maintain aspect ratio 
+} */
+
+section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section p {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* .portfolio-item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+} */
+
+/* .portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.portfolio-item {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust the width of each item 
+    margin: 10px;
+} */
+  
+.portfolio-items {
+    display: flex; /* Use Flexbox layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+    justify-content: space-around; /* Distribute items evenly with space around them */
+  }
+  
+  .portfolio-item {
+    flex: 0 0 calc(33.33% - 20px); /* Each item takes up one-third of the container width with some spacing */
+    margin: 10px; /* Add spacing around each item */
+    text-align: center; /* Center-align content within each item */
+  }
+  
+  .portfolio-item img {
+    max-width: 100%; /* Ensure images don't exceed their container width */
+  }
+  
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    font-size: 0.8em;
+}
+
+/* Form Styles */
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background: #555;
+}
