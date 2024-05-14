@@ -3,10 +3,11 @@
     max-height: 100vh;
 }
 .lyricsContainer {
-    margin: 150px 0;
+    /* margin: 150px 0; */
     position: relative;
     height: 100vh;
     overflow: auto;
+    padding: 20px 0px;
   }
   
   .lyricsCenteredElement {

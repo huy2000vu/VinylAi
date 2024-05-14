@@ -11,9 +11,12 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-scripts": "5.0.1",
+    "react-slideshow-image": "^4.3.1",
     "react-spotify-web-playback": "^0.14.3",
     "spotify-web-api-node": "^5.0.2",
+    "string-similarity": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
