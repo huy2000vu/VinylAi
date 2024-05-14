@@ -1,0 +1,29 @@
+/* Styles for the Slideshow container */
+.slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  /* Styles for individual slides */
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the image within its container */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    animation: fade 3s linear infinite; /* Example animation for transitioning between slides */
+  }
+  
+  @keyframes fade {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  

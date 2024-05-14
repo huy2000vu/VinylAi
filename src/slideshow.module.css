@@ -1,0 +1,34 @@
+.container {
+    width: 100%; /* Ensure container takes up full width */
+    height: 100%; /* Ensure container takes up full height */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+  
+  .image {
+    max-width: 100%; /* Ensure image doesn't exceed container width */
+    max-height: 100%; /* Ensure image doesn't exceed container height */
+    width: auto; /* Allow image to adjust its width */
+    height: auto; /* Allow image to adjust its height */
+  }
+  .slideshow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind other content */
+  }
+  .container {
+    position: relative;
+    height: 100vh;
+    
+  }
+  
+  .centeredElement {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }

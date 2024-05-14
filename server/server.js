@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const lyricsFinder = require('lyrics-finder');
 const spotifyWebApi = require('spotify-web-api-node');
+const Genius = require('genius-lyrics');
 
 const app = express();
 app.use(cors());
@@ -52,8 +53,36 @@ app.post('/login', (req, res) => { //arrow function
      }
      )
 })
+// app.get('/lyrics', async (req, res) => {
+//     const lyrics  = (await lyricsFinder(req.query.artist, req.query.track))|| "no lyrics found uwu";
+//     res.json({lyrics})
+// })
+
 app.get('/lyrics', async (req, res) => {
-    const lyrics  = (await lyricsFinder(req.query.artist, req.query.track))|| "no lyrics found uwu";
-    res.json({lyrics})
-})
+    try {
+        const Client = new Genius.Client();
+        console.log(Client);
+        console.log(req.query.artist, req.query.track);
+        const searches = await Client.songs.search(req.query.artist + " " + req.query.track);
+        const firstSong = searches[0];
+        console.log("About the Song:\n", firstSong, "\n");
+
+        // Ok let's get the lyrics
+        const lyrics = await firstSong.lyrics();
+        console.log("Lyrics of the Song:\n", lyrics, "\n");
+        // const artist = await Client.artists.get(987153);
+        // console.log(artist)
+        // res.json(JSON.stringify(lyrics));
+        res.json({lyrics});
+
+
+    } catch (error) {
+            res.json("Lyrics not available for this song.");
+
+    }
+});
+
+
+
+
 app.listen(3001)
