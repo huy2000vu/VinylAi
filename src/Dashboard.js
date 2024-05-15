@@ -16,7 +16,6 @@ const spotifyApi = new SpotifyWebApi({
 })
 
 
-
 export default function Dashboard({code}) {
     const accessToken = useAuth(code); 
     const [search, setSearch] = useState('');
@@ -26,6 +25,16 @@ export default function Dashboard({code}) {
     const [genre, setGenre] = useState('');
 
     const [currentTrackGenre, setCurrentTrackGenre] = useState('');
+
+    const [musicPlaying, setMusicPlaying] = useState(true);
+
+    // Callback function to update state when music stops
+    const handleMusicStop = () => {
+        setMusicPlaying(prevMusicPlaying => !prevMusicPlaying);
+        // console.log("Music is played: ", musicPlaying);
+
+      // You can perform other actions here when music stops
+    };
 
     useEffect(() => {
         // Set showResults based on whether search has content
@@ -45,14 +54,14 @@ export default function Dashboard({code}) {
     
     useEffect(() => {
         if (!playingTrack) return;
-        console.log(playingTrack);
+        // console.log(playingTrack);
         axios.get('http://localhost:3001/lyrics',{
             params:{
                 track: playingTrack.title,
                 artist: playingTrack.artistName,
             }
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             setLyrics(res.data.lyrics);
         });
 
@@ -64,6 +73,7 @@ export default function Dashboard({code}) {
         if(!accessToken) return
         spotifyApi.setAccessToken(accessToken)
     }, [accessToken])
+
 
     useEffect(() => {
         if(!search) return setSearchResults([])
@@ -120,16 +130,14 @@ export default function Dashboard({code}) {
                             ))}
                             </div>
             )}
-
+   
             <div className='row d-md-flex' style={{paddingBottom: '80px',}}>
-                {searchResults.length === 0 && (
+                {playingTrack ? (
+                    <>
 
                 <div className='col-lg-8 col-md-12'>
                     <Slideshow genre={genre} />
                     </div>
-
-                )}
-                {searchResults.length === 0 && (
 
                     <div className='col-lg-4 col-md-12'>
                         <div className={styles.lyricsContainer}>
@@ -138,7 +146,15 @@ export default function Dashboard({code}) {
                             </div>
                         </div>
                      </div>
-
+                    </>
+                ) : (
+                    <>
+                     <div className={`${styles.logoContainer} col-12`}>
+                        <div className={styles.logoCenteredElement}>
+                            <img src='/logo512.png'></img>
+                        </div>
+                     </div>
+                    </>
                 )}
             </div>
             
@@ -149,7 +165,11 @@ export default function Dashboard({code}) {
             )} */}
          
             <div className='fixed-bottom container'> 
-                <Player accessToken={accessToken} trackUri ={playingTrack?.uri} />
+                <Player 
+                    accessToken={accessToken} 
+                    trackUri ={playingTrack?.uri}
+                    onMusicStop={handleMusicStop}
+                 />
             </div>
             </div>
         </Container>

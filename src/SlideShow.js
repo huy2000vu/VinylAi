@@ -60,14 +60,14 @@ const Slideshow = ({ genre, asBackground }) => {
           }
           const availableGenres = await genreResponse.json();
 
-          console.log(genre);
+          // console.log(genre);
           const genres = generateListC(genre, availableGenres);
 
           
-          console.log(genres);
+          // console.log(genres);
           const encodedGenres = genres.map(g => encodeURIComponent(g)).join(',');
           // encodedGenres = encodedGenres ? encodedGenres : 'no genre';
-          console.log("encoded Genres : ", encodedGenres)
+          // console.log("encoded Genres : ", encodedGenres)
 
           const response = await fetch(`https://script.google.com/macros/s/AKfycbyGiEokxuwPh7qsyqaC9pB9UTpS1Mku0r16zcWQM2R5aQUFEZU4EG77Hes7-QEpTL1c/exec?genres=${encodedGenres}`);
           if (!response.ok) {
