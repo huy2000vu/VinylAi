@@ -32,3 +32,32 @@
     top: 50%;
     transform: translateY(-50%);
   }
+
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+
+    .container {
+      height: 50vh;
+      
+    }
+  
+  }
+
+  @media (max-width: 768px){
+
+    .slideshow-container {
+      position: relative;
+    }
+
+    .container{
+      height:fit-content;
+    }
+
+    .centeredElement {
+      position: relative;
+      transform: none;
+      top: 0;
+      text-align: center;
+    }
+
+  }

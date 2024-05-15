@@ -13,17 +13,22 @@
   .lyricsCenteredElement {
     margin:0;
     position: absolute;
-    top: 49.75%;
+    top: 50%;
     transform: translateY(-50%);
     white-space: pre-wrap;
     width:100%;
-    height: 100%;
+    max-height: 80vh;
+  }
+
+  .lyricsCenteredElement span{
+    margin-top: 20px;
+    overflow: auto;
   }
 
   .logoContainer {
     /* margin: 150px 0; */
     position: relative;
-    height: 84vh;
+    height: 90vh;
     overflow: auto;
     padding: 20px 0px;
   }
@@ -35,4 +40,32 @@
     transform: translateY(-50%);
     width:100%;
     text-align: center;
+  }
+
+  .songSelector{
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    width: 100%;
+    max-width: 1296px;
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    /* CSS rules for medium-sized screens */
+
+    .lyricsContainer {
+      height: 82vh;
+    }
+
+    .logoContainer {
+      height: 84vh;
+    }
+  }
+  
+
+  @media (max-width: 768px){
+
+    .lyricsContainer {
+      margin: 40px 0px 80px;
+    }
   }

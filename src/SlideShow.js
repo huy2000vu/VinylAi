@@ -40,8 +40,8 @@ function generateListC(listB, listA) {
 
 
 const fadeProperties = {
-    duration: 5000, // Duration of the fade animation in milliseconds
-    transitionDuration: 500, // Duration of the transition between slides in milliseconds
+    duration: 7000, // Duration of the fade animation in milliseconds
+    transitionDuration: 1000, // Duration of the transition between slides in milliseconds
     infinite: true, // Whether the slideshow should loop infinitely
     indicators: false, // Whether to show slide indicators
     arrows:false, // Whether to show arrow navigation
@@ -111,10 +111,13 @@ const Slideshow = ({ genre, asBackground }) => {
           <div className={`${styles.container} each-fade`} key={index}>
             <div className={`${styles.centeredElement} image-container`}>
             
-            <LazyLoadImage 
+            <img
+                // height='1000px'
+                // width='1000px'
                 src={imageUrl}
                 className={styles.image}
-                effect='opacity'
+                // effect='blur'
+  
             />
 
             </div>
