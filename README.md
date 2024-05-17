@@ -1,7 +1,9 @@
 # how to run this web app 
-1. cd into the server directory
-2. run the commnad "npm start DevStart"
-3. on another terminal/command prompt -> run "npm start"
+
+1. open two terminals/command promts at the folder.
+2. go into the server directory "cd server" at the one terminal/cmd.
+3. at the server, run the command "npm install" then run "npm start DevStart"
+4. at the root level at another terminal/command prompt -> run "npm install" then run "npm start"
 
 
 
