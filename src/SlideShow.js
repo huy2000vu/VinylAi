@@ -70,6 +70,7 @@ const Slideshow = ({ genre, asBackground }) => {
           // console.log("encoded Genres : ", encodedGenres)
 
           const response = await fetch(`https://script.google.com/macros/s/AKfycbyGiEokxuwPh7qsyqaC9pB9UTpS1Mku0r16zcWQM2R5aQUFEZU4EG77Hes7-QEpTL1c/exec?genres=${encodedGenres}`);
+          console.log(response.url)
           if (!response.ok) {
               throw new Error('Failed to fetch images');
           }
