@@ -1,14 +1,26 @@
-import React from 'react';
-import styles from './backgroundslideshow.module.css' // Import your CSS file for styling
+import React, { useState, useEffect } from 'react';
+import styles from './backgroundslideshow.module.css';
 
-function BackgroundSlideshow({ images }) {
-  // Logic for slideshow functionality here
+function BackgroundSlideshow({ images, interval = 3000 }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    // Set up an interval to change the image
+    const slideshowInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, interval);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(slideshowInterval);
+  }, [images.length, interval]);
 
   return (
     <div className={styles.slideshow}>
-      {/* Use inline styles to set the background image */}
-      <div className={styles.slide} style={{ backgroundImage: `url(${images[0]})` }} />
-      {/* Add more slides as needed */}
+      {/* Display the current image based on the index */}
+      <div
+        className={styles.slide}
+        style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+      />
     </div>
   );
 }

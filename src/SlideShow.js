@@ -40,8 +40,8 @@ function generateListC(listB, listA) {
 
 
 const fadeProperties = {
-    duration: 7000, // Duration of the fade animation in milliseconds
-    transitionDuration: 1000, // Duration of the transition between slides in milliseconds
+    duration: 5000, // Duration of the fade animation in milliseconds
+    transitionDuration: 2000, // Duration of the transition between slides in milliseconds
     infinite: true, // Whether the slideshow should loop infinitely
     indicators: false, // Whether to show slide indicators
     arrows:false, // Whether to show arrow navigation
@@ -60,7 +60,7 @@ const Slideshow = ({ genre, asBackground }) => {
           }
           const availableGenres = await genreResponse.json();
 
-          // console.log(genre);
+          console.log(genre);
           const genres = generateListC(genre, availableGenres);
 
           
@@ -89,14 +89,14 @@ const Slideshow = ({ genre, asBackground }) => {
   }, [genre]);
 
   // Function to shuffle array
-  const shuffleArray = (array) => {
-    const shuffledArray = [...array];
+  function shuffleArray(array) {
+    const shuffledArray = [...array]; // Copy the array to avoid mutating the original
     for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Swap elements
     }
     return shuffledArray;
-  };
+}
 
   if (asBackground) {
     return (
@@ -104,6 +104,7 @@ const Slideshow = ({ genre, asBackground }) => {
     );
   }
 
+  console.log(images)
   return (
 
     <div className="slide-container">
@@ -111,16 +112,11 @@ const Slideshow = ({ genre, asBackground }) => {
       {images.map((imageUrl, index) => (
           <div className={`${styles.container} each-fade`} key={index}>
             <div className={`${styles.centeredElement} image-container`}>
-            
             <img
-                // height='1000px'
-                // width='1000px'
                 src={imageUrl}
+                alt={imageUrl}
                 className={styles.image}
-                // effect='blur'
-  
             />
-
             </div>
           </div>
         ))}
