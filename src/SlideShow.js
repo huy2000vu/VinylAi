@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Image } from 'react-bootstrap';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+// import { Image } from 'react-bootstrap';
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import styles from'./slideshow.module.css';
@@ -40,8 +40,8 @@ function generateListC(listB, listA) {
 
 
 const fadeProperties = {
-    duration: 5000, // Duration of the fade animation in milliseconds
-    transitionDuration: 2000, // Duration of the transition between slides in milliseconds
+    duration: 7000, // Duration of the fade animation in milliseconds
+    transitionDuration: 1000, // Duration of the transition between slides in milliseconds
     infinite: true, // Whether the slideshow should loop infinitely
     indicators: false, // Whether to show slide indicators
     arrows:false, // Whether to show arrow navigation
@@ -104,7 +104,7 @@ const Slideshow = ({ genre, asBackground }) => {
     );
   }
 
-  console.log(images)
+  console.log("list of images: " + images)
   return (
 
     <div className="slide-container">

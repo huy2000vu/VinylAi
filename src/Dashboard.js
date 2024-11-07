@@ -106,6 +106,7 @@ export default function Dashboard({code}) {
 
     const handleSearch = async (artist, track) => {
         const result = await getGenre(artist, track);
+        console.log("result in getGenre: "+ result)
         setGenre(result);
     };
     return (
