@@ -52,6 +52,8 @@ export default function Dashboard({code}) {
   
     }
     
+    // grabs title and artist name and handles search
+    // depends on playingTrack
     useEffect(() => {
         if (!playingTrack) return;
         // console.log(playingTrack);
@@ -68,13 +70,16 @@ export default function Dashboard({code}) {
         handleSearch(playingTrack.artistName, playingTrack.title);
     }, [playingTrack]);
 
-
+    // sets the token on the spotify api to make requests on behalf of user
+    // depends on accessToken
     useEffect(() => {
         if(!accessToken) return
         spotifyApi.setAccessToken(accessToken)
     }, [accessToken])
 
-
+    // searches track based on user input
+    // returns artist name, track name, artist if, track uri, album image url
+    // depends on search and accessToken
     useEffect(() => {
         if(!search) return setSearchResults([])
         if(!accessToken) return 
@@ -89,14 +94,18 @@ export default function Dashboard({code}) {
                      image) =>{
                         if(image.height < smallest.height) return image
                         return smallest
-                    }, track.album.images[0])
-                
+                    }, track.album.images[0]);
+                const largestAlbumImage = track.album.images.reduce((largest, image) => {
+                        if (image.height > largest.height) return image;
+                        return largest;
+                    }, track.album.images[0]);    
                 return {
                     artistName: track.artists[0].name,
                     title: track.name,
                     artistId: track.artists[0].id,
                     uri: track.uri,
-                    albumUrl: smallestAlbumImage.url
+                    albumUrl: smallestAlbumImage.url,
+                    largeAlbumUrl: largestAlbumImage.url
                 }
             }))
         })
@@ -104,15 +113,15 @@ export default function Dashboard({code}) {
         return() => cancel = true
     }, [search, accessToken])
 
+
+
     const handleSearch = async (artist, track) => {
         const result = await getGenre(artist, track);
         console.log("result in getGenre: "+ result)
         setGenre(result);
     };
+
     return (
-
-
-
         <Container className="" style={{height :'100vh'}}>
             <Form.Control 
             type ="Search" 
@@ -134,10 +143,9 @@ export default function Dashboard({code}) {
    
             <div className='row d-md-flex' style={{paddingBottom: '80px',}}>
                 {playingTrack ? (
-                    <>
-
+                <>
                 <div className='col-lg-8 col-md-12'>
-                    <Slideshow genre={genre} />
+                    <Slideshow genre={genre} fallbackImage={playingTrack.largeAlbumUrl}/>
                     </div>
 
                     <div className='col-lg-4 col-md-12'>
@@ -147,7 +155,7 @@ export default function Dashboard({code}) {
                             </div>
                         </div>
                      </div>
-                    </>
+                </>
                 ) : (
                     <>
                      <div className={`${styles.logoContainer} col-12`}>
@@ -158,13 +166,6 @@ export default function Dashboard({code}) {
                     </>
                 )}
             </div>
-            
-            {/* {searchResults.length === 0 && (
-                <div className='text-center' style={{whiteSpace: 'pre'}}>
-                    {lyrics}
-                    </div>
-            )} */}
-         
             <div className='fixed-bottom container'> 
                 <Player 
                     accessToken={accessToken} 
