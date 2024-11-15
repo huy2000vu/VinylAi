@@ -41,19 +41,19 @@ function generateListC(listB, listA) {
 
 const fadeProperties = {
     duration: 5000, // Duration of the fade animation in milliseconds
-    transitionDuration: 1500, // Duration of the transition between slides in milliseconds
+    transitionDuration: 2000, // Duration of the transition between slides in milliseconds
     infinite: true, // Whether the slideshow should loop infinitely
     indicators: false, // Whether to show slide indicators
     arrows:false, // Whether to show arrow navigation
   };
 
-const Slideshow = ({ genre, fallbackImage, asBackground }) => {
+const Slideshow = ({ genre, fallbackImage}) => {
   const [images, setImages] = useState([]);
   console.log(fallbackImage)
   useEffect(() => {
     const fetchImages = async () => {
       try {
-          
+          setImages([]);
           const genreResponse = await fetch(`https://script.google.com/macros/s/AKfycbxg66d5nIkR92mJwrOgpUdAPCXZug5pMOumsphAHMRNYcwDDTTi8dIBdl5Em-ucvkjC/exec`);
           if (!genreResponse.ok) {
             throw new Error('Failed to get folder names');
@@ -97,10 +97,14 @@ const Slideshow = ({ genre, fallbackImage, asBackground }) => {
     return shuffledArray;
 }
 
-  if (asBackground) {
-    return (
-      <BackgroundSlideshow images={images} />
-    );
+  // if (asBackground) {
+  //   return (
+  //     <BackgroundSlideshow images={images} />
+  //   );
+  // }
+
+  if (images.length === 0) {
+    return (<p>waiting on genre</p>);
   }
 
   console.log("list of images: " + images)
