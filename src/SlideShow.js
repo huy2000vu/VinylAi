@@ -60,7 +60,7 @@ const Slideshow = ({ genre, fallbackImage}) => {
           }
           const availableGenres = await genreResponse.json();
 
-          console.log(genre);
+          console.log("this is the genre: " + genre[0]);
           const genres = generateListC(genre, availableGenres);
 
           
@@ -68,8 +68,10 @@ const Slideshow = ({ genre, fallbackImage}) => {
           const encodedGenres = genres.map(g => encodeURIComponent(g)).join(',');
           // encodedGenres = encodedGenres ? encodedGenres : 'no genre';
           // console.log("encoded Genres : ", encodedGenres)
-
-          const response = await fetch(`https://script.google.com/macros/s/AKfycbyGiEokxuwPh7qsyqaC9pB9UTpS1Mku0r16zcWQM2R5aQUFEZU4EG77Hes7-QEpTL1c/exec?genres=${encodedGenres}`);
+          let oneGenre = genre[0]
+          //const response = await fetch(`https://script.google.com/macros/s/AKfycbyGiEokxuwPh7qsyqaC9pB9UTpS1Mku0r16zcWQM2R5aQUFEZU4EG77Hes7-QEpTL1c/exec?genres=${encodedGenres}`);
+      
+          const response = await fetch(`https://script.google.com/macros/s/AKfycbyfUP2KfH1IxwTJn37zyS0Eh52jas3ilzp-0Dw1rqGIl790OOTt5k76SfJ9MEVOvrBA/exec?folderName=${oneGenre}`);
           console.log("this is the response after genres: "+ response.url)
           if (!response.ok) {
               throw new Error('Failed to fetch images');
@@ -78,7 +80,8 @@ const Slideshow = ({ genre, fallbackImage}) => {
           const shuffledImageIds = shuffleArray(imageIds);
           console.log("these are the image ids: " + imageIds)
           //const imageUrls = shuffledImageIds.map((fileId) => `https://drive.google.com/thumbnail?id=${fileId.trim()}&sz=w1000`);
-          const imageUrls = shuffledImageIds.map((fileId) => `https://lh3.googleusercontent.com/d/${fileId}=w1000?authuser=0`);
+          //const imageUrls = shuffledImageIds.map((fileId) => `https://lh3.googleusercontent.com/d/${fileId}=w1000?authuser=0`);
+          const imageUrls = shuffledImageIds.map((fileId) => `https://drive.google.com/thumbnail?id=${fileId}&sz=w500`);
           setImages(imageUrls);
       } catch (error) {
           console.error('Error fetching images:', error);
