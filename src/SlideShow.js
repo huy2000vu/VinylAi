@@ -62,19 +62,19 @@ const Slideshow = ({ genre, fallbackImage}) => {
 
           console.log("this is the genre: " + genre[0]);
           const genres = generateListC(genre, availableGenres);
-
+          console.log("These are the available genres: " + genres);
           
           // console.log(genres);
           const encodedGenres = genres.map(g => encodeURIComponent(g)).join(',');
           // encodedGenres = encodedGenres ? encodedGenres : 'no genre';
           // console.log("encoded Genres : ", encodedGenres)
-          let oneGenre = genre[0]
+          let oneGenre = genres[0]
           //const response = await fetch(`https://script.google.com/macros/s/AKfycbyGiEokxuwPh7qsyqaC9pB9UTpS1Mku0r16zcWQM2R5aQUFEZU4EG77Hes7-QEpTL1c/exec?genres=${encodedGenres}`);
       
-          const response = await fetch(`https://script.google.com/macros/s/AKfycbyfUP2KfH1IxwTJn37zyS0Eh52jas3ilzp-0Dw1rqGIl790OOTt5k76SfJ9MEVOvrBA/exec?folderName=${oneGenre}`);
-          console.log("this is the response after genres: "+ response.url)
+          let response = await fetch(`https://script.google.com/macros/s/AKfycbyfUP2KfH1IxwTJn37zyS0Eh52jas3ilzp-0Dw1rqGIl790OOTt5k76SfJ9MEVOvrBA/exec?folderName=${oneGenre}`);
           if (!response.ok) {
-              throw new Error('Failed to fetch images');
+              response = await fetch(`https://script.google.com/macros/s/AKfycbyfUP2KfH1IxwTJn37zyS0Eh52jas3ilzp-0Dw1rqGIl790OOTt5k76SfJ9MEVOvrBA/exec?folderName=no-genre`);
+              //throw new Error('Failed to fetch images');
           }
           const imageIds = await response.json(); // Not needed since it's already an array
           const shuffledImageIds = shuffleArray(imageIds);
@@ -107,7 +107,8 @@ const Slideshow = ({ genre, fallbackImage}) => {
   // }
 
   if (images.length === 0) {
-    return (<p>waiting on genre</p>);
+    return (
+    <img src={fallbackImage}/>);
   }
 
   console.log("list of images: " + images)
