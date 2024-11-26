@@ -15,7 +15,8 @@ async function getGenre(artist, track) {
         const tags = response.data.track && response.data.track.toptags.tag;
         if (tags && tags.length > 0) {
             // Extract the top three tags
-            const topTags = tags.slice(0, 3).map(tag => tag.name);
+            //const topTags = tags.slice(0, 3).map(tag => tag.name);
+            const topTags = tags.map(tag => tag.name);
             console.log(topTags);
             return topTags; // Return array of top three tags
         } else {

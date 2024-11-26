@@ -175,8 +175,8 @@ function generateListC(listB, listA) {
 
 
 const fadeProperties = {
-    duration: 5500, // Duration of the fade animation in milliseconds
-    transitionDuration: 2000, // Duration of the transition between slides in milliseconds
+    duration: 4000, // Duration of the fade animation in milliseconds
+    transitionDuration: 1500, // Duration of the transition between slides in milliseconds
     infinite: true, // Whether the slideshow should loop infinitely
     indicators: false, // Whether to show slide indicators
     arrows:false, // Whether to show arrow navigation
@@ -196,19 +196,27 @@ const Slideshow = ({ genre, fallbackImage}) => {
           const availableGenres = await genreResponse.json();
 
           console.log("this is the genres in slideshow: " + genre);
-          const genres = generateListC(genre, availableGenres);
-          console.log("These are the available genres: " + genres);
-          
+          // const genres = generateListC(genre, availableGenres);
+          const genres = []
+          genre.forEach(element => {
+            let processElement = element.toLowerCase().replace(/-/g, ' ')
+            if (availableGenres.includes(processElement)) {
+              genres.push(processElement);
+            }
+          });
+          if (genres.length === 0) {
+            genres.push("no-genre");
+          }
           // 
           let list = genres.map((element) => element.replace(/ /g, "-"));
           let updatedList = list.map((element) => (element === "Spotify-Lyrics/Genre-Retrieval" ? "no-genre" : element));
-          console.log("list with hyphens: " + list);
-          let genreList = updatedList.length < 3 ? updatedList: replaceMostUnlikeWithSimilar(updatedList);
+          console.log("list with hyphens: " + updatedList);
+          //let genreList = updatedList.length < 3 ? updatedList: replaceMostUnlikeWithSimilar(updatedList);
 
-
-          console.log("actual genrelist: " + genreList)
+          
+          console.log("actual genrelist: " + updatedList)
           let imageUrls = [];
-          genreList.forEach((genre) => {
+          updatedList.forEach((genre) => {
             for (let i = 0; i <= 9; i++) {
               imageUrls.push(`/${genre}/${genre}_${i}.png`)
             }
