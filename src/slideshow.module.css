@@ -51,14 +51,15 @@
     }
 
     .container{
-      height:fit-content;
+      height:min(50vh, 300px);
     }
 
     .centeredElement {
-      position: relative;
-      transform: none;
-      top: 0;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
     }
 
   }
